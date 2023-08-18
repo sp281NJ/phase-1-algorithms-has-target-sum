@@ -1,6 +1,32 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
-}
+  const sums = [];
+  const elementMap = new Map();
+  // check each element in array
+  for (let i = 0; i < array.length; i++) {
+
+    // calculate target - current element
+    let sumMinusElement = target - array[i];
+
+    // check if this number exists in element map
+    // if so then we found a pair of numbers that sum to target
+    if (elementMap.has(sumMinusElement.toString())) {
+      sums.push([array[i], sumMinusElement]);
+      //return true;
+    }
+
+    // add the current number to the element map
+    elementMap.set(array[i].toString(), array[i])
+    
+  }
+
+  // return all pairs of integers that sum to S
+  if(sums.length > 0){
+    return true;
+  }else{return false;}
+  
+
+};
 
 /* 
   Write the Big O time complexity of your function here
@@ -8,6 +34,8 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+  - iterate thru the array and add each and if the sum equals the target return true
+  if iterating thru the array doesn't equal the targer return false
 */
 
 /*
